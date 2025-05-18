@@ -1,11 +1,13 @@
 # screen
 
-[![](https://github.com/jasonjfoster/screen/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/jasonjfoster/screen/actions/workflows/check-standard.yaml)
-[![](https://codecov.io/gh/jasonjfoster/screen/graph/badge.svg)](https://app.codecov.io/github/jasonjfoster/screen)
+[![GitHub Actions](https://github.com/jasonjfoster/screen/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/jasonjfoster/screen/actions/workflows/check-standard.yaml)
+[![CRAN version](https://www.r-pkg.org/badges/version/yfscreen)](https://cran.r-project.org/package=yfscreen)
+[![codecov](https://codecov.io/gh/jasonjfoster/screen/graph/badge.svg)](https://app.codecov.io/github/jasonjfoster/screen)
+[![Downloads](https://cranlogs.r-pkg.org/badges/yfscreen?color=brightgreen)](https://www.r-pkg.org/pkg/yfscreen)
 
 ## Overview
 
-`yfscreen` is a package that provides simple and efficient access to Yahoo Finance's `screener` API for querying and retrieval of financial data.
+`yfscreen` is a package that provides simple and efficient access to Yahoo Finance's `screener` API ([https://finance.yahoo.com/research-hub/screener/](https://finance.yahoo.com/research-hub/screener/)) for querying and retrieval of financial data.
 
 The core functionality of the `yfscreen` package abstracts the complexities of interacting with Yahoo Finance APIs, such as session management, crumb and cookie handling, query construction, pagination, and JSON payload generation. This abstraction allows users to focus on filtering and retrieving data rather than managing API details. Use cases include screening across a range of security types:
 

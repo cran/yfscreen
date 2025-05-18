@@ -192,6 +192,38 @@ process_cols <- function(df) {
 
 }
 
+with_env <- function(new_env, code) {
+
+  old_env <- list()
+  env_names <- names(new_env)
+
+  for (i in 1:length(env_names)) {
+
+    name <- env_names[i]
+    old_env[[name]] <- Sys.getenv(name, unset = NA)
+
+  }
+
+  on.exit({
+    for (i in 1:length(env_names)) {
+
+      name <- env_names[i]
+      val <- old_env[[name]]
+
+      if (is.na(val)) {
+        Sys.unsetenv(name)
+      } else {
+        Sys.setenv(name = val)
+      }
+
+    }
+  }, add = TRUE)
+
+  do.call(Sys.setenv, as.list(new_env))
+  force(code)
+
+}
+
 ##' Create a Structured Query for the Yahoo Finance API
 ##'
 ##' A function to create a structured query with logical operations and nested conditions
@@ -329,7 +361,10 @@ get_session <- function() {
 
   curl::handle_setheaders(handle, .list = headers)
 
-  response <- curl::curl_fetch_memory(api_url, handle = handle)
+  response <- with_env(c(CURL_SSL_BACKEND = "openssl"), {
+    curl::curl_fetch_memory(api_url, handle = handle)
+  })
+
   crumb <- rawToChar(response$content)
 
   cookies <- curl::handle_cookies(handle)
@@ -366,7 +401,9 @@ get_session <- function() {
 ##'
 ##' payload <- create_payload("equity", query)
 ##'
+##' \dontrun{
 ##' data <- get_data(payload)
+##' }
 ##' @export
 get_data <- function(payload = NULL) {
 
@@ -416,10 +453,16 @@ get_data <- function(payload = NULL) {
     curl::handle_setopt(handle, postfields = json_payload)
     curl::handle_setheaders(handle, .list = headers)
 
-    response <- curl::curl(api_url, handle = handle)
+    result_df <- tryCatch({
 
-    result <- jsonlite::fromJSON(response)
-    result_df <- result[["finance"]][["result"]][["quotes"]][[1]]
+      response <- curl::curl(api_url, handle = handle)
+
+      result <- jsonlite::fromJSON(response)
+      result[["finance"]][["result"]][["quotes"]][[1]]
+
+    }, error = function(e) {
+      return(data.frame())
+    })
 
     if (length(result_df) > 0) {
 

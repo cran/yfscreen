@@ -1,8 +1,8 @@
-18cdc7786421a01504504674fcf7a0c7 *DESCRIPTION
+bbd29dcacc408c1c8650f6e2b74b04e8 *DESCRIPTION
 dda7211138ae106a52e84f02a3b5966f *NAMESPACE
-dcde028d5a1805c8f57c30d1cc2623d4 *R/screen.R
-da65c2673f88110f0528ccfa1534ec92 *README.md
-ad28b3e257fcacc7e41e46e03946459c *build/partial.rdb
+298cbfa8c4fa95c5f0533f0bc20ddabc *R/screen.R
+740600f7dc23ecd566895c9f89ccb497 *README.md
+2870e7f621fa3d5a50d8258e01702023 *build/partial.rdb
 15c07e4c8429e8c3671867b5b8baa0d2 *data/data_categoryname.rda
 862c9850e0431212ef6fca4740660d73 *data/data_errors.rda
 95eddfbb41644d53c0d897b7582a3eb0 *data/data_exchange.rda
@@ -23,8 +23,8 @@ ec0760240280d8e030f441589d7cc12f *man/data_exchange.Rd
 81b6dead75027cf604dcef3abc71ddc2 *man/data_peer_group.Rd
 9c9ce8dd386a132ad39e3ef1aae17aec *man/data_region.Rd
 4cf108932d72080ab9cc3fc1123ac18d *man/data_sector.Rd
-45735e571f08931657206c445f58d754 *man/get_data.Rd
+925794f01a3c5b0e5e2e27d108875cfb *man/get_data.Rd
 07f12a109f675eee59b18aaa9ad41524 *man/get_session.Rd
 3c77f0e80a791da3960323db8a91862d *man/yfscreen-package.Rd
 33217d6a28028ffa61b6d20d2afbd239 *tests/testthat.R
-5e860169fe96a1455436edc8b018c9c0 *tests/testthat/test-screen.R
+116aeba87157af4670b93bf4d87e9011 *tests/testthat/test-screen.R
